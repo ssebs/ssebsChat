@@ -22,5 +22,7 @@ NodeJS server to handle Chat & other requests.
 - Socket IO for message handling
 - JSON DB
   - lowdb?
+  - Sample DB data:
+    - `sampledb.json`
   - Tables:
-  - See `db-arch/` folder
+    - See `db-arch/` folder for csv's

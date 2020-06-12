@@ -1,0 +1,59 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Test User",
+            "email": "tuser@ssebs.com",
+            "passwordHash": ":$2y$10$ydB2BAjcfKxivNTVmcy/euEkksba4saQUcw6vxCAhUGpNgLPkCShW"
+        },
+        {
+            "id": 2,
+            "name": "Sebastian Safari",
+            "email": "seb@ssebs.com",
+            "passwordHash": ":$2y$10$ydB2BAjcfKxivNTVmcy/euEkksba4saQUcw6vxCAhUGpNgLPkCShW"
+        }
+    ],
+    "rooms": [
+        {
+            "id": 1,
+            "name": "Test's alone room"
+        },
+        {
+            "id": 2,
+            "name": "Test + Seb"
+        },
+        {
+            "id": 3,
+            "name": "Seb's alone room"
+        }
+    ],
+    "chats": [
+        {
+            "id": 1,
+            "roomID": 2,
+            "userID": 1,
+            "msg": "Hey what's up?",
+            "sent": "2020-06-12T15:44:00"
+        },
+        {
+            "id": 2,
+            "roomID": 2,
+            "userID": 2,
+            "msg": "Yo man",
+            "sent": "2020-06-12T15:46:23"
+        },
+        {
+            "id": 3,
+            "roomID": 2,
+            "userID": 1,
+            "msg": "OK bye now",
+            "sent": "2020-06-12T15:47:43"
+        }
+    ],
+    "roomUsers": [
+        { "id": 1, "roomID": 1, "userID": 1 },
+        { "id": 2, "roomID": 2, "userID": 1 },
+        { "id": 3, "roomID": 2, "userID": 2 },
+        { "id": 4, "roomID": 3, "userID": 2 }
+    ]
+}
