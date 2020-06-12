@@ -1,0 +1,3 @@
+id, name, email, passwdHash
+1, Test User, tuser@ssebs.com, :$2y$10$ydB2BAjcfKxivNTVmcy/euEkksba4saQUcw6vxCAhUGpNgLPkCShW
+2, Sebastian Safari, ssebs@ssebs.com, :$2y$10$ydB2BAjcfKxivNTVmcy/euEkksba4saQUcw6vxCAhUGpNgLPkCShW

@@ -1,5 +1,5 @@
 # ssebsChat
-Encrypted Chat Application
+Cross platform Chat Application
 
 ## Usage
 tbd
@@ -50,3 +50,6 @@ tbd
   - Displays website
 - Browser Extension
   - Displays website
+
+## License
+MIT &copy; 2020 Sebastian Safari
