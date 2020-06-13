@@ -1,0 +1,27 @@
+{
+  "name": "ssebschat-server",
+  "version": "1.0.0",
+  "description": "Node / Socket.io server for ssebsChat.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssebs/ssebsChat.git"
+  },
+  "keywords": [
+    "ssebs",
+    "ssebschat"
+  ],
+  "author": "Sebastian Safari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ssebs/ssebsChat/issues"
+  },
+  "homepage": "https://github.com/ssebs/ssebsChat#readme",
+  "dependencies": {
+    "lowdb": "^1.0.0",
+    "socket.io": "^2.3.0"
+  }
+}
