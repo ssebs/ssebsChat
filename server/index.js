@@ -12,7 +12,7 @@ const { User, Room, Chat, RoomUser } = require("./models");
 const main = () => {
     console.log("Welcome to ssebsChat Server");
     const fn = "dev.json";
-    fs.unlink(fn, () => {});
+    // fs.unlink(fn, () => {});
     const db_obj = new db.DB(fn);
     app.use(express.json());
 
@@ -23,6 +23,9 @@ const main = () => {
     // Users routes
     app.get("/users", (req, res) => {
         res.send(db_obj.getUsers());
+    });
+    app.get("/users/:id", (req, res) => {
+        res.send(db_obj.getUser(req.params.id));
     });
     app.post("/users", (req, res) => {
         const { name, email, passwordHash } = req.body;
