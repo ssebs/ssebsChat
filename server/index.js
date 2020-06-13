@@ -34,7 +34,8 @@ const main = () => {
 
         res.send(db_obj.getUsers());
     });
-
+    app.put("/users/:id", (req, res) => {});
+    app.delete("/users/:id", (req, res) => {});
     http.listen(3000, () => {
         console.log("Listening on :3000");
     });
