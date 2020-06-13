@@ -49,7 +49,7 @@ class DB {
         return this.db.get("rooms").find({ id: id }).value();
     }
     updateRoom(id, roomObj) {
-        const room = this.db.get("room").find({ id: id });
+        const room = this.db.get("rooms").find({ id: id });
         return room.assign(roomObj).write();
     }
     deleteRoom(id) {
