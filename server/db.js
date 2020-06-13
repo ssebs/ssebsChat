@@ -52,7 +52,7 @@ class DB {
     }
     updateRoom(id, roomObj) {
         const room = this.db.get("rooms").find({ id: id });
-        return room.assign(roomObj).write();
+        return room.assign({...roomObj, id:id}).write();
     }
     deleteRoom(id) {
         return this.db.get("rooms").remove({ id: id }).write();
@@ -70,7 +70,7 @@ class DB {
     }
     updateChat(id, chatObj) {
         const chat = this.db.get("chats").find({ id: id });
-        return chat.assign(chatObj).write();
+        return chat.assign({...chatObj, id:id}).write();
     }
     deleteChat(id) {
         return this.db.get("chats").remove({ id: id }).write();

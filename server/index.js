@@ -42,6 +42,32 @@ const main = () => {
     app.delete("/users/:id", (req, res) => {
         res.send(db_obj.deleteUser(req.params.id))
     });
+
+    // Room routes
+    app.get("/rooms", (req, res) => {
+        res.send(db_obj.getRooms());
+    });
+    app.get("/rooms/:id", (req, res) => {
+        res.send(db_obj.getRoom(req.params.id));
+    });
+    app.post("/rooms", (req, res) => {
+        const { name, email, passwordHash } = req.body;
+        const newRoom = new Room(name, email, passwordHash);
+        db_obj.addRoom(newRoom);
+
+        res.send(db_obj.getRooms());
+    });
+    app.put("/rooms/:id", (req, res) => {
+        const { name, email, passwordHash } = req.body;
+        const updatedRoom = new Room(name, email, passwordHash)
+        res.send(db_obj.updateRoom(req.params.id, updatedRoom))
+    });
+    app.delete("/rooms/:id", (req, res) => {
+        res.send(db_obj.deleteRoom(req.params.id))
+    });
+
+
+    // main listener
     http.listen(3000, () => {
         console.log("Listening on :3000");
     });
