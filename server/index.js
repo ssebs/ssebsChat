@@ -66,6 +66,15 @@ const main = () => {
         res.send(db_obj.deleteRoom(req.params.id))
     });
 
+    // Chat routes
+    // Should use socket.io
+    io.on('connection', (socket) => {
+        console.log('User connected');
+        socket.on("chat", (msg)=> {
+            console.log(msg)
+        })
+    });
+
 
     // main listener
     http.listen(3000, () => {
