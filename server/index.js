@@ -42,6 +42,23 @@ const roomTests = (db_obj) => {
     console.log(db_obj.getRooms());
 };
 
+const chatTests = (db_obj) => {
+    const r1 = new Chat("rid1", "uid1", "hello", "2020-06-12T18:17:00");
+
+    console.log(db_obj.getChats());
+    db_obj.addChat(r1);
+    console.log("Added chat");
+    console.log(db_obj.getChats());
+    
+    const id = db_obj.getChats()[0].id;
+    db_obj.updateChat(id, { ...db_obj.getChat(id), name: "Updated chat name" });
+    console.log("Updated chat");
+    console.log(db_obj.getChats());
+    
+    db_obj.deleteChat(db_obj.getChats()[0].id);
+    console.log("Deleted chat");
+    console.log(db_obj.getChats());
+};
 
 const main = () => {
     console.log("Welcome to ssebsChat Server");
@@ -50,7 +67,8 @@ const main = () => {
 
     const db_obj = new db.DB(fn);
     // userTests(db_obj);
-    roomTests(db_obj)
+    // roomTests(db_obj)
+    chatTests(db_obj)
 
     // fs.unlink(fn, () => {});
 };

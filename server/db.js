@@ -38,6 +38,7 @@ class DB {
     deleteUser(id) {
         return this.db.get("users").remove({ id: id }).write();
     }
+    
     // room stuff
     addRoom(roomObj) {
         return this.db.get("rooms").push(roomObj).write();
@@ -57,6 +58,23 @@ class DB {
     }
 
     // chat stuff
+    addChat(chatObj) {
+        return this.db.get("chats").push(chatObj).write();
+    }
+    getChats() {
+        return this.db.get("chats").value();
+    }
+    getChat(id) {
+        return this.db.get("chats").find({ id: id }).value();
+    }
+    updateChat(id, chatObj) {
+        const chat = this.db.get("chats").find({ id: id });
+        return chat.assign(chatObj).write();
+    }
+    deleteChat(id) {
+        return this.db.get("chats").remove({ id: id }).write();
+    }
+
 
     // roomuser stuff
 }
