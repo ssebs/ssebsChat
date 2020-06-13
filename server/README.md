@@ -13,9 +13,32 @@ NodeJS server to handle Chat & other requests.
 
 ## Todo:
 - [ ] Architect / design how the server will work
+  - [x] DB design
+  - REST
+    - For creating / modifying...
+      - Users
+      - Rooms
+      - RoomUsers
+  - Socket.io
+    - For creating / modifying...
+      - Chats 
 - [ ] Implement
+  - [ ] DB / Models working
+    - [ ] User
+    - [ ] Room
+    - [ ] Chat
+    - [ ] RoomUser
+  - [ ] REST
+    - [ ] User
+    - [ ] Room
+    - [ ] RoomUser
+  - [ ] Sockets
+    - [ ] Chats
 - [ ] Serve the React frontend?
 - [ ] Make it work with Docker
+- [ ] Tests
+  - [x] DB In general
+  - [ ] Use assert...
 
 ## Architecture
 - Express app
