@@ -34,8 +34,14 @@ const main = () => {
 
         res.send(db_obj.getUsers());
     });
-    app.put("/users/:id", (req, res) => {});
-    app.delete("/users/:id", (req, res) => {});
+    app.put("/users/:id", (req, res) => {
+        const { name, email, passwordHash } = req.body;
+        const updatedUser = new User(name, email, passwordHash)
+        res.send(db_obj.updateUser(req.params.id, updatedUser))
+    });
+    app.delete("/users/:id", (req, res) => {
+        res.send(db_obj.deleteUser(req.params.id))
+    });
     http.listen(3000, () => {
         console.log("Listening on :3000");
     });

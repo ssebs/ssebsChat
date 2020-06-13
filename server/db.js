@@ -32,8 +32,9 @@ class DB {
         return this.db.get("users").find({ id: id }).value();
     }
     updateUser(id, userObj) {
+        // use same id
         const usr = this.db.get("users").find({ id: id });
-        return usr.assign(userObj).write();
+        return usr.assign({...userObj, id:id}).write();
     }
     deleteUser(id) {
         return this.db.get("users").remove({ id: id }).write();
