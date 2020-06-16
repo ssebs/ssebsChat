@@ -1,0 +1,3 @@
+*.json
+!sampledb.json
+node_modules/
