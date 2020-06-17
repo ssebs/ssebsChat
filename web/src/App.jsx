@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import Header from "./components/Header";
-import Home from "./components/Home";
+import Home from "./components/MessageList/Home";
 import Profile from "./components/Profile";
 import MsgWindow from "./components/MsgWindow";
 import NewConversation from "./components/NewConversation";

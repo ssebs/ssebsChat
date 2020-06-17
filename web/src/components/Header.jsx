@@ -21,7 +21,7 @@ export const Header = props => {
                             <Nav.Link>Create a new Conversation</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/profile">
-                            <Nav.Link>😃</Nav.Link>
+                            <Nav.Link><span role="img" aria-label="smiley">😃</span></Nav.Link>
                         </LinkContainer>
                     </Navbar.Collapse>
                 </Container>
