@@ -28,7 +28,7 @@ const Home = (props) => {
         fetch(`${BASE_URL}/convos`)
             .then((r) => r.json())
             .then((resp) => {
-                console.log(resp);
+                // console.log(resp);
                 setConvos(resp);
             })
             .catch((err) => console.error(err));

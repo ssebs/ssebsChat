@@ -20,10 +20,10 @@ const MsgWindow = (props) => {
 
     return (
         <div>
-            <h1>Your message stuff should be here</h1>
-
-            {id && <pre>{id}</pre>}
+            {/* {id && <pre>{id}</pre>} */}
             {room && <h2>{room.name}</h2>}
+            <hr />
+            <p>*messages here*</p>
         </div>
     );
 };

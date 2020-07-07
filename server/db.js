@@ -48,8 +48,8 @@ class DB {
     getRooms() {
         return this.db.get("rooms").value();
     }
-    getRoom(id) {
-        return this.db.get("rooms").find({ id: id }).value();
+    getRoom(rID) {
+        return this.db.get("rooms").find(r => r.id == rID ? r : undefined).value()
     }
     updateRoom(id, roomObj) {
         const room = this.db.get("rooms").find({ id: id });

@@ -10,7 +10,6 @@ const ListItem = (props) => {
                 className="bg-dark"
                 id={props.id}
                 onClick={() => {
-                    console.log([props])
                     props.history.push(`/convo/${props.id}`);
                 }}
             >
