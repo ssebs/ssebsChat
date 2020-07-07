@@ -1,4 +1,5 @@
 import React from "react";
+
 import ListItem from "./ListItem";
 
 const sampleConvos = [
@@ -13,12 +14,13 @@ const sampleConvos = [
         id: "fsdh1jjk",
         roomName: "Self room",
         lastPerson: "bot",
-        lastMsg: "This is the self room, where you can chat with yourself for notes.",
+        lastMsg:
+            "This is the self room, where you can chat with yourself for notes.",
         sentAt: new Date("2020-06-09"),
     },
 ];
 
-const Home = () => {
+const Home = (props) => {
     return (
         <div>
             <h1>Home page</h1>

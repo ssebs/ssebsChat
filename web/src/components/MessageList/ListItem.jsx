@@ -1,13 +1,20 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { Card } from "react-bootstrap";
 import PropTypes from "prop-types";
 
 const ListItem = (props) => {
     return (
-        <div>
-            <Card id={props.id}>
-                <Card.Body>
-                    <Card.Title>{props.roomName}</Card.Title>
+        <div className="my-3 bg-dark text-light rounded">
+            <Card
+                className="bg-dark"
+                id={props.id}
+                onClick={() => {
+                    props.history.push(`/convo/${props.id}`);
+                }}
+            >
+                <Card.Body className="py-1 px-2">
+                    <Card.Title className="my-0">{props.roomName}</Card.Title>
                     <Card.Text>
                         <small>{props.lastPerson}</small>: {props.lastMsg}
                     </Card.Text>
@@ -28,4 +35,4 @@ ListItem.propTypes = {
     sentAt: PropTypes.instanceOf(Date),
 };
 
-export default ListItem;
+export default withRouter(ListItem);
