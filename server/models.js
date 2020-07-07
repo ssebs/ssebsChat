@@ -40,7 +40,18 @@ class RoomUser {
     }
 }
 
+class Convo {
+    constructor(roomID, roomName, lastPerson, lastMsg, sentAt) {
+        this.roomID = roomID;
+        this.roomName = roomName;
+        this.lastPerson = lastPerson;
+        this.lastMsg = lastMsg;
+        this.sentAt = sentAt;
+    }
+}
+
 module.exports.User = User;
 module.exports.Room = Room;
 module.exports.Chat = Chat;
 module.exports.RoomUser = RoomUser;
+module.exports.Convo = Convo;

@@ -10,6 +10,7 @@ const ListItem = (props) => {
                 className="bg-dark"
                 id={props.id}
                 onClick={() => {
+                    console.log([props])
                     props.history.push(`/convo/${props.id}`);
                 }}
             >
@@ -19,7 +20,7 @@ const ListItem = (props) => {
                         <small>{props.lastPerson}</small>: {props.lastMsg}
                     </Card.Text>
                     <footer className="blockquote-footer">
-                        {props.sentAt.toDateString()}
+                        {props.sentAt}
                     </footer>
                 </Card.Body>
             </Card>
@@ -28,11 +29,11 @@ const ListItem = (props) => {
 };
 
 ListItem.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.number,
     roomName: PropTypes.string,
     lastPerson: PropTypes.string,
     lastMsg: PropTypes.string,
-    sentAt: PropTypes.instanceOf(Date),
+    sentAt: PropTypes.string,
 };
 
 export default withRouter(ListItem);

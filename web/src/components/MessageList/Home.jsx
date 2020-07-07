@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import ListItem from "./ListItem";
+import { BASE_URL } from "../../Util";
 
 const sampleConvos = [
     {
@@ -21,20 +22,35 @@ const sampleConvos = [
 ];
 
 const Home = (props) => {
+    const [convos, setConvos] = useState(null);
+
+    useEffect(() => {
+        fetch(`${BASE_URL}/convos`)
+            .then((r) => r.json())
+            .then((resp) => {
+                console.log(resp);
+                setConvos(resp);
+            })
+            .catch((err) => console.error(err));
+    }, []);
+
     return (
         <div>
             <h1>Home page</h1>
-            {sampleConvos.map((room) => (
-                <ListItem
-                    id={room.id}
-                    key={room.id}
-                    roomName={room.roomName}
-                    lastPerson={room.lastPerson}
-                    lastMsg={room.lastMsg}
-                    sentAt={room.sentAt}
-                />
-            ))}
-            <p>*List conversations here*</p>
+            {convos && (
+                <>
+                    {convos.map((convo) => (
+                        <ListItem
+                            id={convo.roomID}
+                            key={convo.roomID}
+                            roomName={convo.roomName}
+                            lastPerson={convo.lastPerson}
+                            lastMsg={convo.lastMsg}
+                            sentAt={convo.sentAt}
+                        />
+                    ))}
+                </>
+            )}
         </div>
     );
 };

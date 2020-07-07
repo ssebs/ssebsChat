@@ -6,6 +6,8 @@ const fs = require("fs");
 const express = require("express");
 const app = express();
 const http = require("http").createServer(app);
+const io = require("socket.io")();
+const cors = require("cors");
 const db = require("./db");
 const { User, Room, Chat, RoomUser } = require("./models");
 
@@ -15,6 +17,7 @@ const main = () => {
     // fs.unlink(fn, () => {});
     const db_obj = new db.DB(fn);
     app.use(express.json());
+    app.use(cors());
 
     app.get("/", (req, res) => {
         res.send("<h1>ssebsChat server</h1>");
@@ -36,11 +39,11 @@ const main = () => {
     });
     app.put("/users/:id", (req, res) => {
         const { name, email, passwordHash } = req.body;
-        const updatedUser = new User(name, email, passwordHash)
-        res.send(db_obj.updateUser(req.params.id, updatedUser))
+        const updatedUser = new User(name, email, passwordHash);
+        res.send(db_obj.updateUser(req.params.id, updatedUser));
     });
     app.delete("/users/:id", (req, res) => {
-        res.send(db_obj.deleteUser(req.params.id))
+        res.send(db_obj.deleteUser(req.params.id));
     });
 
     // Room routes
@@ -59,26 +62,37 @@ const main = () => {
     });
     app.put("/rooms/:id", (req, res) => {
         const { name, email, passwordHash } = req.body;
-        const updatedRoom = new Room(name, email, passwordHash)
-        res.send(db_obj.updateRoom(req.params.id, updatedRoom))
+        const updatedRoom = new Room(name, email, passwordHash);
+        res.send(db_obj.updateRoom(req.params.id, updatedRoom));
     });
     app.delete("/rooms/:id", (req, res) => {
-        res.send(db_obj.deleteRoom(req.params.id))
+        res.send(db_obj.deleteRoom(req.params.id));
+    });
+    // Convos routes
+    app.get("/convos", (req, res) => {
+        // Build a convo object from multiple types
+        const rooms = db_obj.getRooms();
+        const convos = [];
+
+        rooms.forEach((room) => {
+            // console.log(room);
+            convos.push(db_obj.getConvo(room.id, room.name));
+        });
+        res.send(convos);
     });
 
     // Chat routes
     // Should use socket.io
-    io.on('connection', (socket) => {
-        console.log('User connected');
-        socket.on("chat", (msg)=> {
-            console.log(msg)
-        })
+    io.on("connection", (socket) => {
+        console.log("User connected");
+        socket.on("chat", (msg) => {
+            console.log(msg);
+        });
     });
 
-
     // main listener
-    http.listen(3000, () => {
-        console.log("Listening on :3000");
+    http.listen(3005, () => {
+        console.log("Listening on :3005");
     });
     // fs.unlink(fn, () => {});
 };

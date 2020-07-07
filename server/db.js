@@ -2,6 +2,7 @@
  * db.js - Handle DB operations
  */
 const low = require("lowdb");
+const _ = require("lodash");
 const FileSync = require("lowdb/adapters/FileSync");
 
 class DB {
@@ -34,12 +35,12 @@ class DB {
     updateUser(id, userObj) {
         // use same id
         const usr = this.db.get("users").find({ id: id });
-        return usr.assign({...userObj, id:id}).write();
+        return usr.assign({ ...userObj, id: id }).write();
     }
     deleteUser(id) {
         return this.db.get("users").remove({ id: id }).write();
     }
-    
+
     // room stuff
     addRoom(roomObj) {
         return this.db.get("rooms").push(roomObj).write();
@@ -52,7 +53,7 @@ class DB {
     }
     updateRoom(id, roomObj) {
         const room = this.db.get("rooms").find({ id: id });
-        return room.assign({...roomObj, id:id}).write();
+        return room.assign({ ...roomObj, id: id }).write();
     }
     deleteRoom(id) {
         return this.db.get("rooms").remove({ id: id }).write();
@@ -70,12 +71,39 @@ class DB {
     }
     updateChat(id, chatObj) {
         const chat = this.db.get("chats").find({ id: id });
-        return chat.assign({...chatObj, id:id}).write();
+        return chat.assign({ ...chatObj, id: id }).write();
     }
     deleteChat(id) {
         return this.db.get("chats").remove({ id: id }).write();
     }
 
+    // convos stuff
+    getConvo(roomID, roomName) {
+        const chats = this.db.get("chats").filter({ roomID: roomID }).value();
+
+        let lastUserName = "";
+        let lastMsgTxt = "";
+        let sentAtTxt = "";
+
+        if (!_.isEmpty(chats)) {
+            const lastMsg = chats.slice(-1)[0];
+            const lastUserID = lastMsg.userID;
+            lastUserName = this.db.get("users").find({ id: lastUserID }).value()
+                .name;
+            lastMsgTxt = lastMsg.msg;
+            sentAtTxt = lastMsg.sent;
+        }
+
+        const convo = {
+            roomID: roomID,
+            roomName: roomName,
+            lastPerson: lastUserName,
+            lastMsg: lastMsgTxt,
+            sentAt: sentAtTxt,
+        };
+        // console.log(convo);
+        return convo;
+    }
 
     // roomuser stuff
 }
